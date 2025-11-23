@@ -1,7 +1,8 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
+import { API_URL } from '../config';
 
-const api = axios.create({ baseURL: '/api' });
+const api = axios.create({ baseURL: `${API_URL}/api` });
 
 export default function Settings() {
   const queryClient = useQueryClient();

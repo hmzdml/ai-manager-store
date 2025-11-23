@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { API_URL } from '../config';
 
 interface Product {
   id: string;
@@ -12,11 +13,11 @@ export default function Dashboard() {
   const [seeded, setSeeded] = useState(false);
 
   const load = () => {
-    axios.get('/api/products').then(r => setProducts(r.data));
+    axios.get(`${API_URL}/api/products`).then(r => setProducts(r.data));
   };
 
   const seed = () => {
-    axios.post('/api/seed').then(() => {
+    axios.post(`${API_URL}/api/seed`).then(() => {
       setSeeded(true);
       load();
     });
