@@ -1,27 +1,87 @@
-# ShopBot Starter (Minimal Version)
+# 🤖 AI-Powered Shopify Store Manager
 
-Bu basit sürüm:
-- Backend (Node.js + Express + Prisma)
-- Frontend (React + Vite)
-- Shopify için şimdilik MOCK (gerçek API eklenebilir)
-- Ürün listeleme demo
+## 🌟 Genel Bakış
 
-## Çalıştırma (Yerel)
+Bu sistem, Shopify mağazanızı **tamamen otomatik olarak** yönetmek, optimize etmek ve büyütmek için yapay zeka kullanan kapsamlı bir otomasyon platformudur.
 
-1. Node.js 18+ kur.
-2. Docker (opsiyonel) ile Postgres & Redis çalıştır:
-   docker-compose up -d
-3. backend klasörü:
-   npm install
-   npx prisma migrate dev --name init
-   npm run dev
-4. ayrı terminal → frontend klasörü:
-   npm install
-   npm run dev
-5. Tarayıcı: http://localhost:3000
-6. “Seed Demo Products” butonuna bas → demo ürünler görünür.
+**Ana Özellik:** Mağaza sahibi 5 yıl boyunca hiç müdahale etmese bile, sistem ürünleri kategorize edecek, içerikleri iyileştirecek, reklamları yönetecek, sosyal medya paylaşımları yapacak ve SEO'yu optimize edecek şekilde tasarlanmıştır.
 
-Geliştirmek istediğinde gerçek Shopify entegrasyonu için backend/src/services/shopify.ts içindeki mock'u değiştir.
+## ✨ Özellikler
+
+### 🛍️ Shopify Entegrasyonu
+- Ürünlerin, koleksiyonların, siparişlerin otomatik senkronizasyonu
+- Ürün başlıklarını, açıklamalarını ve metadatayı güncelleme
+- Otomatik koleksiyon oluşturma ve yönetme
+
+### 🧠 AI-Destekli İşlemler
+- **Otomatik Ürün Kategorileme:** GPT-4 kullanarak ürünleri mantıklı kategorilere ayırır
+- **İçerik İyileştirme:** SEO-dostu başlıklar, açıklamalar ve meta tag'ler oluşturur
+- **Reklam Metni Oluşturma:** Google, Meta, TikTok ve Microsoft reklamları için AI ile içerik üretir
+- **Sosyal Medya İçeriği:** Instagram, Facebook ve TikTok için altyazılar ve hashtag'ler üretir
+- **Blog Yazıları:** Ürünlerle ilgili SEO-optimized blog içeriği oluşturur
+
+### 🎯 Reklam Platformları
+- Google Ads, Meta Ads, TikTok Ads, Microsoft Ads entegrasyonu
+- Otomatik bütçe optimizasyonu
+- Kampanya performans takibi
+
+### 📱 Sosyal Medya, 🔍 SEO ve 📊 Google Merchant Center
+- Otomatik içerik paylaşımı, SEO denetimi ve GMC senkronizasyonu
+
+## 🚀 Kurulum ve Çalıştırma
+
+### Gereksinimler
+- Node.js 18+
+- PostgreSQL 14+
+- Redis 6+
+- Shopify mağazası (Admin API erişimi)
+- OpenAI API anahtarı
+
+### 1. Ortam Değişkenlerini Yapılandırın
+
+`.env.example` dosyasını `.env` olarak kopyalayın ve tüm gerekli anahtarları doldurun:
+
+```bash
+cp .env.example .env
+```
+
+**Önemli değişkenler:**
+- `DATABASE_URL` - PostgreSQL bağlantı string'i
+- `SHOPIFY_SHOP_URL` - Mağazanızın URL'i
+- `SHOPIFY_ACCESS_TOKEN` - Shopify Admin API token'ı
+- `OPENAI_API_KEY` - OpenAI API anahtarı
+- `REDIS_URL` - Redis bağlantı string'i
+
+### 2. Servisleri Başlatın
+
+**PostgreSQL ve Redis:**
+```bash
+docker-compose up -d
+```
+
+**Backend kurulum ve çalıştırma:**
+```bash
+cd backend
+npm install
+npm run db:generate
+npm run db:push
+npm run dev
+```
+
+**Worker süreçleri (ayrı terminal):**
+```bash
+cd backend
+npm run worker:dev
+```
+
+**Frontend (ayrı terminal):**
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+**Tarayıcıda açın:** http://localhost:5173
 
 ## Codespaces (Tarayıcıda Hızlı Başlangıç)
 
